@@ -1,0 +1,15 @@
+{
+  "name": "custom-reverse-proxy",
+  "version": "1.0.0",
+  "description": "It uses custom reverse proxy for aws cloud client",
+  "main": "script.js",
+  "scripts": {
+    "test": "npm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "adityaKaaltatva"
+  },
+  "author": "Aditya",
+  "license": "ISC"
+}
