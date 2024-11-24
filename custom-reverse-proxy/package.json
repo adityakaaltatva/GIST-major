@@ -4,12 +4,18 @@
   "description": "It uses custom reverse proxy for aws cloud client",
   "main": "script.js",
   "scripts": {
-    "test": "npm"
+    "test": "npm",
+    "dev":"node script.js"
   },
+  "type":"module",
+
   "repository": {
     "type": "git",
     "url": "adityaKaaltatva"
   },
   "author": "Aditya",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "http-proxy": "^1.18.1"
+  }
 }

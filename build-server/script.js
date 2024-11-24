@@ -1,8 +1,8 @@
-const {exec} =require('child_process');
-const {path}=require('path');
-const fs=require('fs');
-const {S3Client,PutObjectCommand}=require('@aws-sdk/client-s3');
-const {mime}=require('mime-types');
+const { exec } = require('child_process');
+const path = require('path'); // Correctly import the path module
+const fs = require('fs');
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const mime = require('mime-types'); // mime should be imported directly
 
 const s3Client = new S3Client({
     region: 'ap-south-1',
@@ -10,44 +10,44 @@ const s3Client = new S3Client({
         accessKeyId: 'AKIAZI2LG4SGRAEW2YZI',
         secretAccessKey: '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'
     }
-})
+});
 
-const PROJECT_ID=process.env.PROJECT_ID
+const PROJECT_ID = process.env.PROJECT_ID;
 
-async function init(){
-    console.log('Execitinh script.js');
+async function init() {
+    console.log('Executing script.js');
 
-    const outdirpath=path.join(__dirname,'output')
+    const outdirpath = path.join(__dirname, 'output'); // Use path module correctly
 
-    const p=exec(`cd ${outdirpath} && npm install && npm run build`)
+    const p = exec(`cd ${outdirpath} && npm install && npm run build`);
 
-    p.stdout.on('data',function(data){
+    p.stdout.on('data', function (data) {
         console.log(data.toString());
-    })
-    p.stdout.on('error',function(data){
-        console.log('Error',data.toString());
-    })
-    p.on('close',async function(){
-        console.log("Build Complete")
-        const distfolderpath=path.join(__dirname,'output','dist')
-        const distfolderContents=fs.readdirSync(distfolderpath,{recursive:true})
+    });
+    p.stdout.on('error', function (data) {
+        console.log('Error', data.toString());
+    });
+    p.on('close', async function () {
+        console.log("Build Complete");
+        const distfolderpath = path.join(__dirname, 'output', 'dist');
+        const distfolderContents = fs.readdirSync(distfolderpath, { withFileTypes: true });
 
-        for (const filepath of distfolderContents){
-            if(fs.lstat(filepath).isDirectory()) continue;
-            console.log('Uploading');
+        for (const entry of distfolderContents) {
+            if (entry.isDirectory()) continue;
 
+            const filepath = path.join(distfolderpath, entry.name);
+            console.log('Uploading:', filepath);
 
-            const command=new PutObjectCommand({
-                Bucket:'gist-deploy',
-                key:`__outputs/${PROJECT_ID}/${filepath}`,
-                Body:fs.createReadStream(filepath),
-                ContentType:mime.lookup(filepath)
-            })
+            const command = new PutObjectCommand({
+                Bucket: 'gist-deploy',
+                Key: `__outputs/${PROJECT_ID}/${entry.name}`,
+                Body: fs.createReadStream(filepath),
+                ContentType: mime.lookup(filepath) || 'application/octet-stream',
+            });
+
             await s3Client.send(command);
-            
-         }
-         console.log('...DOne Dona dan')
-    })
+        }
+        console.log('...Done Dona dan');
+    });
 }
 init();
-// hello init
