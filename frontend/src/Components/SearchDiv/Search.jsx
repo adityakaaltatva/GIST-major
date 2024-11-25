@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+
 
 const Search = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -12,7 +14,6 @@ const Search = () => {
 
     return (
         <div className="w-screen min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white">
-            {/* Header Section */}
             <header className="w-full py-20 px-20 bg-gray-900 shadow-md mb-8">
                 <div className="max-w-5xl mx-auto text-center">
                     <h1 className="text-6xl font-extrabold text-white leading-tight">GIST Deployments</h1>
@@ -50,16 +51,18 @@ const Search = () => {
 
                 {/* Footer Section */}
                 <div className="text-center mt-8">
+                   
+                    <Link to='/deploy'>
                     <button
                         className="px-8 py-3 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-br hover:from-purple-700 hover:to-blue-600 rounded-lg text-lg font-semibold transition-transform transform hover:scale-105"
                         aria-label="Deploy a New Project"
                     >
                         Deploy a New Project
                     </button>
+                    </Link>
                 </div>
             </div>
 
-            {/* Bar Section: Scale, Monitor, Evolve */}
             <nav className="w-full bg-gray-800 py-6 mt-12 shadow-md">
                 <div className="max-w-7xl mx-auto flex justify-around text-center">
                     {[ 
@@ -79,7 +82,6 @@ const Search = () => {
                 </div>
             </nav>
 
-            {/* Video Section */}
             <div
                 id="video-section"
                 className={`${
@@ -101,7 +103,6 @@ const Search = () => {
                 </div>
             </div>
 
-            {/* Footer White Strip */}
             <div className="w-full h-0.1 bg-white mt-12"></div>
         </div>
     );
