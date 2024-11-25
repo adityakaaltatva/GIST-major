@@ -13,7 +13,7 @@ const Deploy = () => {
         <h1 style={styles.title}>🚀 New Project</h1>
         <p style={styles.subtitle}>
           <span style={styles.gradientText}>
-            Deploy your app to production effortlessly
+           Gist Deploys your app to production effortlessly
           </span>
         </p>
       </div>
@@ -35,7 +35,7 @@ const Deploy = () => {
             <SiPostgresql size={32} style={styles.icon} />
             Deploy PostgreSQL
           </button>
-          <button style={styles.card} onClick={() => handleRedirect("/future")}>
+          <button style={styles.card} onClick={() => handleRedirect("/redis")}>
             <SiRedis size={32} style={styles.icon} />
             Deploy Redis
           </button>

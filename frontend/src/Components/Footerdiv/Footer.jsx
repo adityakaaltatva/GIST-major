@@ -1,5 +1,7 @@
 import  { useState } from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/solid";
+import { FaHome, FaBook, FaQuestionCircle, FaBlog, FaTags, FaPhoneAlt, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+
 
 const Footer = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -48,41 +50,42 @@ const Footer = () => {
         <div>
           <h2 className="text-lg font-semibold pb-2 underline text-white">Menu</h2>
           <ul>
-            <li>
-              <a href="#home" className="hover:text-blue-500">
-                Home
+            <li className="py-1">
+              <a href="#home" className="hover:text-blue-500 flex items-center justify-center">
+                <FaHome className="mr-2" /> Home
               </a>
             </li>
-            <li>
-              <a href="#docs" className="hover:text-blue-500">
-                Documentation
+            <li className="py-1">
+              <a href="#docs" className="hover:text-blue-500 flex items-center justify-center">
+                <FaBook className="mr-2" /> Documentation
               </a>
             </li>
-            <li>
-              <a href="#guides" className="hover:text-blue-500">
-                Guides
+            <li className="py-1">
+              <a href="#guides" className="hover:text-blue-500 flex items-center justify-center">
+                <FaBook className="mr-2" /> Guides
               </a>
             </li>
           </ul>
         </div>
 
+
         {/* Help Section */}
         <div>
           <h2 className="text-lg font-semibold pb-2 underline text-white">Help</h2>
           <ul>
-            <li>
-              <a href="#help" className="hover:text-blue-500">
-                Help
+            <li className="py-1">
+              <a href="#help" className="hover:text-blue-500 flex items-center justify-center">
+                <FaQuestionCircle className="mr-2" /> Help
               </a>
             </li>
-            <li>
-              <a href="#sales" className="hover:text-blue-500">
-                Contact Sales
+            <li className="py-1">
+              <a href="#sales" className="hover:text-blue-500 flex items-center justify-center">
+                <FaPhoneAlt className="mr-2" /> Contact Sales
               </a>
             </li>
-            <li>
-              <a href="#blog" className="hover:text-blue-500">
-                Blog
+            <li className="py-1">
+              <a href="#blog" className="hover:text-blue-500 flex items-center justify-center">
+                <FaBlog className="mr-2" /> Blog
               </a>
             </li>
           </ul>
@@ -92,23 +95,38 @@ const Footer = () => {
         <div>
           <h2 className="text-lg font-semibold pb-2 underline text-white">Resources</h2>
           <ul>
-            <li>
-              <a href="#changelog" className="hover:text-blue-500">
-                Changelog
+            <li className="py-1">
+              <a href="#changelog" className="hover:text-blue-500 flex items-center justify-center">
+                <FaTags className="mr-2" /> Changelog
               </a>
             </li>
-            <li>
-              <a href="#pricing" className="hover:text-blue-500">
-                Pricing
+            <li className="py-1">
+              <a href="#pricing" className="hover:text-blue-500 flex items-center justify-center">
+                <FaTags className="mr-2" /> Pricing
               </a>
             </li>
-            <li>
-              <a href="#enterprise" className="hover:text-blue-500">
-                Enterprise
+            <li className="py-1">
+              <a href="#enterprise" className="hover:text-blue-500 flex items-center justify-center">
+                <FaTags className="mr-2" /> Enterprise
               </a>
             </li>
           </ul>
         </div>
+      </div>
+
+      <div className="flex justify-center items-center space-x-6 py-6">
+        <a href="https://facebook.com" className="text-white hover:text-blue-600">
+          <FaFacebook className="w-6 h-6" />
+        </a>
+        <a href="https://twitter.com" className="text-white hover:text-blue-400">
+          <FaTwitter className="w-6 h-6" />
+        </a>
+        <a href="https://linkedin.com" className="text-white hover:text-blue-500">
+          <FaLinkedin className="w-6 h-6" />
+        </a>
+        <a href="https://instagram.com" className="text-white hover:text-pink-500">
+          <FaInstagram className="w-6 h-6" />
+        </a>
       </div>
 
       {/* Footer Bottom */}

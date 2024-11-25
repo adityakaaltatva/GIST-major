@@ -2,6 +2,7 @@ const express=require('express');
 const generateSlug=require('random-word-slugs')
 const app=express();
 
+// automated code build 
 
 const PORT=9000;
 

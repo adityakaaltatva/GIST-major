@@ -14,6 +14,7 @@ import Blog from "./pages/Blog.jsx";
 import Pricing from "./pages/Pricing.jsx";
 import Deploy from "./pages/Deploy.jsx";
 import { Future } from "./pages/Future.jsx";
+import RedisDashboard from "./pages/redis.jsx";
 
 const AppContent = () => {
   const location = useLocation();
@@ -35,6 +36,8 @@ const AppContent = () => {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/deploy" element={<Deploy />} />
         <Route path="/future" element={<Future />} />
+        <Route path="/redis" element={<RedisDashboard />} />
+
       </Routes>
       {/* Conditionally render Footer */}
       {!hideHeaderFooter && <Footer />}
