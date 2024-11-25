@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import './style.css';
 
 const Search = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -23,27 +23,50 @@ const Search = () => {
                 </div>
             </header>
 
-            <div className="max-w-5xl mx-auto bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl shadow-2xl p-10 space-y-8 border-[6px] border-transparent bg-clip-border mt-8"
-                 style={{ borderImage: "linear-gradient(to right, #7F00FF, #00BFFF) 1" }}>
+            <div
+                className="max-w-5xl mx-auto bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl shadow-2xl p-10 space-y-8 border-[6px] border-transparent bg-clip-border mt-8"
+                style={{ borderImage: "linear-gradient(to right, #7F00FF, #00BFFF) 1" }}
+            >
                 {/* Key Features Section */}
                 <section>
                     <p className="text-2xl font-semibold text-white text-center mb-4">
                         Key Features
                     </p>
                     <ul className="list-none grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {[ 
-                            { title: "Automated Pipelines", desc: "Deploy both frontend and backend with ease." },
-                            { title: "GitHub Integration", desc: "Enable CI/CD for streamlined workflows." },
-                            { title: "Scalability", desc: "Built for cloud environments with high availability." },
-                            { title: "Blockchain Security", desc: "Transparent, secure, and tamper-proof deployments." },
+                        {[
+                            {
+                                title: "Automated Pipelines",
+                                desc: "Deploy frontend and backend seamlessly with streamlined workflows.",
+                                icon: "🚀",
+                            },
+                            {
+                                title: "GitHub Integration",
+                                desc: "Enable powerful CI/CD workflows directly from your repository.",
+                                icon: "🔗",
+                            },
+                            {
+                                title: "Scalability",
+                                desc: "Scale effortlessly to meet high-demand cloud environments.",
+                                icon: "🌐",
+                            },
+                            {
+                                title: "Blockchain Security",
+                                desc: "Achieve secure and tamper-proof deployments with transparency.",
+                                icon: "🔒",
+                            },
                         ].map((feature, index) => (
                             <li
                                 key={index}
-                                className="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
+                                className="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 opacity-0 translate-y-10 animate-slide-up"
                                 aria-label={feature.title}
                             >
-                                <span className="block text-xl font-bold text-gray-300">{feature.title}</span>
-                                <p className="text-gray-400 mt-2">{feature.desc}</p>
+                                <div className="flex items-center space-x-4">
+                                    <span className="text-4xl">{feature.icon}</span>
+                                    <span className="block text-xl font-bold text-gray-300">
+                                        {feature.title}
+                                    </span>
+                                </div>
+                                <p className="text-gray-400 mt-2 text-sm">{feature.desc}</p>
                             </li>
                         ))}
                     </ul>
@@ -51,24 +74,35 @@ const Search = () => {
 
                 {/* Footer Section */}
                 <div className="text-center mt-8">
-                   
-                    <Link to='/deploy'>
-                    <button
-                        className="px-8 py-3 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-br hover:from-purple-700 hover:to-blue-600 rounded-lg text-lg font-semibold transition-transform transform hover:scale-105"
-                        aria-label="Deploy a New Project"
-                    >
-                        Deploy a New Project
-                    </button>
+                    <Link to="/deploy">
+                        <button
+                            className="px-8 py-3 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-br hover:from-purple-700 hover:to-blue-600 rounded-lg text-lg font-semibold transition-transform transform hover:scale-110"
+                            aria-label="Deploy a New Project"
+                        >
+                            Deploy a New Project
+                        </button>
                     </Link>
                 </div>
             </div>
 
             <nav className="w-full bg-gray-800 py-6 mt-12 shadow-md">
                 <div className="max-w-7xl mx-auto flex justify-around text-center">
-                    {[ 
-                        { title: "Scale", desc: "Seamlessly expand your infrastructure.", video: "https://res.cloudinary.com/YOUR_CLOUD_NAME/video/upload/v1732459080/etbtvp7bt2sfqtmi8sys.mkv" },
-                        { title: "Monitor", desc: "Stay informed with built-in observability.", video: "https://www.youtube.com/embed/IqQT2aA0TWI?autoplay=1" },
-                        { title: "Evolve", desc: "Adapt to modern frameworks effortlessly.", video: "/assets/evolve.mp4" },
+                    {[
+                        {
+                            title: "Scale",
+                            desc: "Seamlessly expand your infrastructure.",
+                            video: "https://res.cloudinary.com/YOUR_CLOUD_NAME/video/upload/v1732459080/etbtvp7bt2sfqtmi8sys.mkv",
+                        },
+                        {
+                            title: "Monitor",
+                            desc: "Stay informed with built-in observability.",
+                            video: "https://www.youtube.com/embed/IqQT2aA0TWI?autoplay=1",
+                        },
+                        {
+                            title: "Evolve",
+                            desc: "Adapt to modern frameworks effortlessly.",
+                            video: "/assets/evolve.mp4",
+                        },
                     ].map((item, index) => (
                         <div
                             key={index}
