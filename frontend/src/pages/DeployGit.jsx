@@ -3,7 +3,6 @@ import { FaPlus, FaSpinner } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Components/Footerdiv/Footer";
 import ArchNavbar from "../Components/NavBar/archNavbar";
-import Skeleton from "./skeleton";
 
 const DeployGit = () => {
   const navigate = useNavigate();
@@ -91,9 +90,7 @@ const DeployGit = () => {
     <div className="min-h-screen bg-gradient-to-r from-gray-900 via-black to-gray-800 text-white flex flex-col">
       <ArchNavbar />
       <div className="flex-grow p-8 flex flex-col items-center">
-        {isDeploying ? (
-          <Skeleton />
-        ) : (
+        {!isDeploying ? (
           <>
             <div className="text-center mb-10">
               <h1 className="text-4xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
@@ -145,20 +142,6 @@ const DeployGit = () => {
               </div>
             </div>
 
-            {isDeploying && (
-              <div className="mt-8 flex flex-col items-center space-y-4">
-                <p className="text-lg font-medium text-gray-200">
-                  Deploying in <span className="text-purple-400">{timer}</span> seconds...
-                </p>
-                <div className="w-full max-w-md bg-gray-700 rounded-full h-4 overflow-hidden">
-                  <div
-                    className="bg-purple-600 h-full transition-all"
-                    style={{ width: `${(30 - timer) * (100 / 30)}%` }}
-                  ></div>
-                </div>
-              </div>
-            )}
-
             <div className="mt-8 flex flex-col items-center space-y-6">
               {!captchaVerified ? (
                 <button
@@ -178,7 +161,7 @@ const DeployGit = () => {
                   className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:scale-105 transition-transform"
                   onClick={handleMetaMaskConnection}
                 >
-                  Connect Wallet
+                  Verify Using Blockchain
                 </button>
               )}
             </div>
@@ -205,6 +188,26 @@ const DeployGit = () => {
               </label>
             </div>
           </>
+        ) : (
+          <div className="mt-8 flex flex-col items-center space-y-4">
+            <p className="text-lg font-medium text-gray-200">
+              Deploying in <span className="text-purple-400">{timer}</span> seconds...
+            </p>
+
+            {/* Skeleton Loader while timer is running */}
+            <div className="w-full max-w-md bg-gray-700 rounded-full h-4 overflow-hidden">
+              <div
+                className="bg-purple-600 h-full transition-all"
+                style={{ width: `${(30 - timer) * (100 / 30)}%` }}
+              ></div>
+            </div>
+
+            {/* Skeleton Loader */}
+            <div className="mt-4 w-full max-w-md h-10 bg-gray-600 animate-pulse rounded-lg"></div>
+
+            {/* Timer indicator */}
+            <div className="mt-4 w-full max-w-md h-2 bg-gray-600 animate-pulse rounded-lg"></div>
+          </div>
         )}
       </div>
 

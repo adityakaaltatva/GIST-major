@@ -1,14 +1,20 @@
 import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 import './App.css';
+
+// Import Components
 import Footer from "./Components/Footerdiv/Footer";
-import ArchNavbar from "./Components/NavBar/archNavbar.jsx"; // Import the ArchNavbar component
+import ArchNavbar from "./Components/NavBar/archNavbar.jsx"; // ArchNavbar
+import DeploymentNavbar from "./Components/NavBar/DeploymentNavbar"; // DeploymentNavbar
 import NavBar from "./Components/NavBar/NavBar";
+
+// Import Pages
 import Search from "./Components/SearchDiv/Search.jsx";
 import AccessControl from "./pages/AccessControl.jsx";
 import Blog from "./pages/Blog.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Deploy from "./pages/Deploy.jsx";
 import DeployGit from "./pages/DeployGit.jsx";
+import Deployment from "./pages/Deployment.jsx";
 import FileManagement from "./pages/FileManagement.jsx";
 import { Future } from "./pages/Future.jsx";
 import Login from "./pages/Login.jsx";
@@ -23,9 +29,12 @@ import TermsAndConditions from "./pages/Terms.jsx";
 const AppContent = () => {
   const location = useLocation();
 
-  // Define paths where NavBar and ArchNavbar should be hidden
+  // Define paths where NavBar and Footer should be hidden
   const hideHeaderFooter =
-    location.pathname === "/deploy-git" || location.pathname === "/deploy"|| location.pathname === "/dashboard";
+    location.pathname === "/deploy-git" ||
+    location.pathname === "/deploy" ||
+    location.pathname === "/dashboard"||
+    location.pathname === "/deployment" ;
 
   // Define paths where ArchNavbar should be shown
   const showArchNavbar =
@@ -33,13 +42,19 @@ const AppContent = () => {
     location.pathname === "/logs" ||
     location.pathname === "/settings" ||
     location.pathname === "/file-management";
-    location.pathname === "/deploy-git";
 
+  // Define paths where DeploymentNavbar should be shown
+  const showDeploymentNavbar = location.pathname === "/deployment";
 
   return (
     <div className="app-container">
-      {!hideHeaderFooter && <NavBar />}
-      {showArchNavbar && <ArchNavbar />} {/* Conditionally render ArchNavbar */}
+      {!hideHeaderFooter && !showDeploymentNavbar && <NavBar />}
+
+      {showArchNavbar && <ArchNavbar />}
+
+      {showDeploymentNavbar && <DeploymentNavbar />}
+
+      {/*  Routes */}
       <Routes>
         <Route path="/" element={<Search />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -56,13 +71,11 @@ const AppContent = () => {
         <Route path="/redis" element={<RedisDashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/deploy-git" element={<DeployGit />} />
+        <Route path="/deployment" element={<Deployment />} />
         <Route path="/terms-condition" element={<TermsAndConditions />} />
-
-
-
       </Routes>
-      {/* Conditionally render Footer */}
-      {!hideHeaderFooter && <Footer />}
+
+      {!hideHeaderFooter && !showDeploymentNavbar && <Footer />}
     </div>
   );
 };

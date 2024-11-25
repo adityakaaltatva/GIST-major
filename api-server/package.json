@@ -10,6 +10,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@aws-sdk/client-ecs": "^3.699.0"
+    "@aws-sdk/client-ecs": "^3.699.0",
+    "ioredis": "^5.4.1",
+    "random-word-slugs": "^0.1.7",
+    "socket.io": "^4.8.1"
   }
 }
