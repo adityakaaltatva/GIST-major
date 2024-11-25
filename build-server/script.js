@@ -1,5 +1,5 @@
 const { exec } = require('child_process');
-const path = require('path'); // Correctly import the path module
+const path = require('path'); 
 const fs = require('fs');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const mime = require('mime-types'); // mime should be imported directly
@@ -47,7 +47,7 @@ async function init() {
 
             await s3Client.send(command);
         }
-        console.log('...Done Dona dan');
+        console.log('...generating build for server');
     });
 }
 init();
