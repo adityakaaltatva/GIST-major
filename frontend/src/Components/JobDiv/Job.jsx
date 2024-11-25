@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { BiTimeFive } from "react-icons/bi";
 import { FaBriefcase } from "react-icons/fa";
 import { AiOutlineShop } from "react-icons/ai";

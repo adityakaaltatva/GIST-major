@@ -15,7 +15,6 @@ const NavBar = () => {
                 </div>
             </Link>
 
-            {/* Desktop Menu */}
             <div className="hidden md:flex gap-8 items-center">
                 <Link to="/dashboard">
                     <li className="menuList list-none text-lg font-medium hover:text-blue-400 transition-all duration-300 cursor-pointer">
@@ -65,7 +64,6 @@ const NavBar = () => {
                 </svg>
             </div>
 
-            {/* Mobile Dropdown Menu */}
             {isMenuOpen && (
                 <div className="absolute top-16 left-0 w-screen bg-gray-800 shadow-lg md:hidden flex flex-col gap-6 py-6 px-6">
                     <Link to="/dashboard">
@@ -89,7 +87,6 @@ const NavBar = () => {
                         </li>
                     </Link>
 
-                    {/* GitHub Login */}
                     <div className="flex justify-center mt-4">
                         <GitHubLogin />
                     </div>

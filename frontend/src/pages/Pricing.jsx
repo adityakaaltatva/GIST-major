@@ -54,9 +54,9 @@ const Pricing = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
-      {/* Header */}
+      {/*  */}
       <div className="text-center py-20 px-8 text-white">
-        <h1 className="text-4xl font-bold mb-4">
+        <h1 className="text-4xl font-bold mb-4 text-white">
           Plans that empower you and your team to ship without friction.
         </h1>
         <p className="text-gray-400">
@@ -65,7 +65,6 @@ const Pricing = () => {
         </p>
       </div>
 
-      {/* Pricing Cards */}
       <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
         {plans.map((plan, index) => (
           <div
@@ -94,9 +93,8 @@ const Pricing = () => {
         ))}
       </div>
 
-      {/* Usage Pricing */}
       <div className="mt-16 max-w-5xl mx-auto px-6">
-        <h2 className="text-2xl font-bold mb-4 text-center">
+        <h2 className="text-2xl font-bold mb-4 text-center text-white">
           Usage Pricing
         </h2>
         <p className="text-center text-gray-400 mb-8">
@@ -104,24 +102,23 @@ const Pricing = () => {
         </p>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-2">Memory</h3>
+            <h3 className="text-xl font-bold mb-2 text-white">Memory</h3>
             <p className="text-gray-300">$10 Per GB / month</p>
             <p className="text-gray-400 text-sm">$0.000231 / GB / minute</p>
           </div>
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-2">CPU</h3>
+            <h3 className="text-xl font-bold mb-2 text-white">CPU</h3>
             <p className="text-gray-300">$20 Per vCPU core / month</p>
             <p className="text-gray-400 text-sm">$0.000463 / vCPU / minute</p>
           </div>
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-2">Network Egress</h3>
+            <h3 className="text-xl font-bold mb-2 text-white">Network Egress</h3>
             <p className="text-gray-300">$0.10 Per GB used</p>
             <p className="text-gray-400 text-sm">$0.000000095367432 / KB</p>
           </div>
         </div>
       </div>
 
-      {/* Footer */}
       <div className="text-center mt-16 py-8 px-4">
         <p className="text-gray-400">
           Goodbye, over-provisioning! On Gist, usage-based pricing means you
