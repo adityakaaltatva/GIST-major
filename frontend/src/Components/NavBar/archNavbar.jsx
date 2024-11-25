@@ -1,20 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ArchNavbar = () => {
   return (
-    <nav className="flex items-center justify-between bg-gray-900 text-white p-4 rounded-b-lg shadow-lg">
+    <nav className="flex items-center justify-between bg-gray-900 text-white p-4">
       {/* Left Side */}
-      <div className="text-xl font-semibold tracking-wide">
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-white">GIST</span> Deployments
+      <div className="text-xl font-semibold">
+        <Link to="/" className="text-white text-2xl font-extrabold">
+          GIST Deployments
+        </Link>
       </div>
 
       {/* Right Side */}
-      <ul className="flex space-x-6 text-sm font-medium">
-        <li className="hover:text-gray-400 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">Architecture</li>
-        <li className="hover:text-gray-400 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">Observability</li>
-        <li className="hover:text-gray-400 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">Logs</li>
-        <li className="hover:text-gray-400 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">Settings</li>
-        <li className="hover:text-gray-400 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">Share</li>
+      <ul className="flex space-x-6 text-sm">
+        <li>
+          <Link to="/architecture" className="hover:text-gray-400">Architecture</Link>
+        </li>
+        <li>
+          <Link to="/observability" className="hover:text-gray-400">Observability</Link>
+        </li>
+        <li>
+          <Link to="/logs" className="hover:text-gray-400">Logs</Link>
+        </li>
+        <li>
+          <Link to="/settings" className="hover:text-gray-400">Settings</Link>
+        </li>
+        <li>
+          <Link to="/share" className="hover:text-gray-400">Share</Link>
+        </li>
       </ul>
     </nav>
   );

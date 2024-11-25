@@ -1,136 +1,99 @@
-// eslint-disable-next-line no-unused-vars
+import React from "react";
 import { FaCubes, FaGithub, FaLeaf } from "react-icons/fa";
 import { SiMongodb, SiMysql, SiPostgresql, SiRedis } from "react-icons/si";
+import { useNavigate } from "react-router-dom";
+import Footer from "../Components/Footerdiv/Footer";
+import ArchNavbar from "../Components/NavBar/archNavbar";
 
 const Deploy = () => {
+  const navigate = useNavigate();
+
   const handleRedirect = (path) => {
-    window.location.href = path;
+    navigate(path);
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <h1 style={styles.title}>🚀 New Project</h1>
-        <p style={styles.subtitle}>
-          <span style={styles.gradientText}>
-           Gist Deploys your app to production effortlessly
+    <div className="min-h-screen bg-gradient-to-r from-gray-900 via-black to-gray-800 text-white flex flex-col">
+      <ArchNavbar />
+
+      {/* Header Section */}
+      <div className="text-center py-16">
+        <h1 className="text-5xl">
+        🚀<span className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">New Project</span>  
+        </h1>
+        <p className="text-lg text-gray-400 mt-4">
+          <span className="bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text">
+            Gist Deploys your app to production effortlessly
           </span>
         </p>
       </div>
-      <div style={styles.options}>
-        <p style={styles.question}>What can we help with?</p>
-        <div style={styles.cardsContainer}>
+
+      {/* Main Options Section */}
+      <div className="flex-grow flex flex-col items-center space-y-8">
+        <p className="text-2xl text-gray-300">What can we help with?</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-8 max-w-screen-md w-full">
           <button
-            style={styles.card}
+            className="bg-gray-800 text-white p-6 rounded-lg shadow-xl hover:scale-105 transition-all transform flex flex-col items-center"
             onClick={() => handleRedirect("/deploy-git")}
           >
-            <FaGithub size={32} style={styles.icon} />
+            <FaGithub size={40} className="text-purple-500 mb-4" />
             Deploy from GitHub Repo
           </button>
-          <button style={styles.card} onClick={() => handleRedirect("/future")}>
-            <FaCubes size={32} style={styles.icon} />
+
+          <button
+            className="bg-gray-800 text-white p-6 rounded-lg shadow-xl hover:scale-105 transition-all transform flex flex-col items-center"
+            onClick={() => handleRedirect("/future")}
+          >
+            <FaCubes size={40} className="text-green-500 mb-4" />
             Deploy a Template
           </button>
-          <button style={styles.card} onClick={() => handleRedirect("/future")}>
-            <SiPostgresql size={32} style={styles.icon} />
+
+          <button
+            className="bg-gray-800 text-white p-6 rounded-lg shadow-xl hover:scale-105 transition-all transform flex flex-col items-center"
+            onClick={() => handleRedirect("/future")}
+          >
+            <SiPostgresql size={40} className="text-blue-500 mb-4" />
             Deploy PostgreSQL
           </button>
-          <button style={styles.card} onClick={() => handleRedirect("/redis")}>
-            <SiRedis size={32} style={styles.icon} />
+
+          <button
+            className="bg-gray-800 text-white p-6 rounded-lg shadow-xl hover:scale-105 transition-all transform flex flex-col items-center"
+            onClick={() => handleRedirect("/redis")}
+          >
+            <SiRedis size={40} className="text-red-500 mb-4" />
             Deploy Redis
           </button>
-          <button style={styles.card} onClick={() => handleRedirect("/future")}>
-            <SiMongodb size={32} style={styles.icon} />
+
+          <button
+            className="bg-gray-800 text-white p-6 rounded-lg shadow-xl hover:scale-105 transition-all transform flex flex-col items-center"
+            onClick={() => handleRedirect("/future")}
+          >
+            <SiMongodb size={40} className="text-green-500 mb-4" />
             Deploy MongoDB
           </button>
-          <button style={styles.card} onClick={() => handleRedirect("/future")}>
-            <SiMysql size={32} style={styles.icon} />
+
+          <button
+            className="bg-gray-800 text-white p-6 rounded-lg shadow-xl hover:scale-105 transition-all transform flex flex-col items-center"
+            onClick={() => handleRedirect("/future")}
+          >
+            <SiMysql size={40} className="text-orange-500 mb-4" />
             Deploy MySQL
           </button>
-          <button style={styles.card} onClick={() => handleRedirect("/future")}>
-            <FaLeaf size={32} style={styles.icon} />
+
+          <button
+            className="bg-gray-800 text-white p-6 rounded-lg shadow-xl hover:scale-105 transition-all transform flex flex-col items-center"
+            onClick={() => handleRedirect("/future")}
+          >
+            <FaLeaf size={40} className="text-yellow-500 mb-4" />
             Empty Project
           </button>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
-};
-
-const styles = {
-  container: {
-    height: "100vh",
-    width: "100vw",
-    background: "linear-gradient(135deg, #1f1f1f, #272727)",
-    color: "#ffffff",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    fontFamily: "'Poppins', sans-serif",
-  },
-  header: {
-    textAlign: "center",
-    marginBottom: "40px",
-  },
-  title: {
-    fontSize: "42px",
-    fontWeight: "bold",
-    margin: "0",
-    color: "#ffffff",
-  },
-  subtitle: {
-    fontSize: "18px",
-    color: "#aaaaaa",
-    margin: "10px 0 0 0",
-  },
-  gradientText: {
-    background: "linear-gradient(to right, #ff7e5f, #feb47b)",
-    WebkitBackgroundClip: "text",
-    color: "transparent",
-    fontWeight: "bold",
-  },
-  options: {
-    width: "100%",
-    maxWidth: "600px",
-    textAlign: "center",
-  },
-  question: {
-    fontSize: "24px",
-    marginBottom: "20px",
-    color: "#e0e0e0",
-  },
-  cardsContainer: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "20px",
-    justifyContent: "center",
-  },
-  card: {
-    backgroundColor: "#333333",
-    color: "#ffffff",
-    padding: "15px",
-    borderRadius: "12px",
-    fontSize: "16px",
-    fontWeight: "bold",
-    textAlign: "center",
-    cursor: "pointer",
-    border: "none",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "10px",
-    boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
-    transition: "transform 0.2s, box-shadow 0.3s",
-  },
-  cardHover: {
-    transform: "scale(1.05)",
-    boxShadow: "0 12px 30px rgba(0, 0, 0, 0.4)",
-  },
-  icon: {
-    marginBottom: "5px",
-    color: "#ff7e5f",
-  },
 };
 
 export default Deploy;
