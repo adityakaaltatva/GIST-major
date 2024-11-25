@@ -1,205 +1,108 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types"; // Import PropTypes for validation
+import './style.css';
 
-const projects = [
-  {
-    name: "gist-deployments",
-    url: "https://gist-deployments.gist.app",
-    repo: "adityakaaltatva/GIST-major-IBM",
-    branch: "master",
-    status: "ok",
-    updated: "4h ago",
-  },
-  {
-    name: "access-cloud-blockchain",
-    url: "https://access-cloud-blockchain.gist.app",
-    repo: "adityakaaltatva/Access_cloud_df",
-    branch: "master",
-    status: "prod",
-    updated: "3d ago",
-  },
-  {
-    name: "access-cloud-blockchain",
-    url: "https://access-cloud-blockchain.gist.app",
-    repo: "adityakaaltatva/Access_cloud_df",
-    branch: "master",
-    status: "prod",
-    updated: "3d ago",
-  },{
-    name: "access-cloud-blockchain",
-    url: "https://access-cloud-blockchain.gist.app",
-    repo: "adityakaaltatva/Access_cloud_df",
-    branch: "master",
-    status: "prod",
-    updated: "3d ago",
-  },{
-    name: "access-cloud-blockchain",
-    url: "https://access-cloud-blockchain.gist.app",
-    repo: "adityakaaltatva/Access_cloud_df",
-    branch: "master",
-    status: "prod",
-    updated: "3d ago",
-  },{
-    name: "access-cloud-blockchain",
-    url: "https://access-cloud-blockchain.gist.app",
-    repo: "adityakaaltatva/Access_cloud_df",
-    branch: "master",
-    status: "prod",
-    updated: "3d ago",
-  },{
-    name: "access-cloud-blockchain",
-    url: "https://access-cloud-blockchain.gist.app",
-    repo: "adityakaaltatva/Access_cloud_df",
-    branch: "master",
-    status: "prod",
-    updated: "3d ago",
-  },{
-    name: "access-cloud-blockchain",
-    url: "https://access-cloud-blockchain.gist.app",
-    repo: "adityakaaltatva/Access_cloud_df",
-    branch: "master",
-    status: "prod",
-    updated: "3d ago",
-  },{
-    name: "access-cloud-blockchain",
-    url: "https://access-cloud-blockchain.gist.app",
-    repo: "adityakaaltatva/Access_cloud_df",
-    branch: "master",
-    status: "prod",
-    updated: "3d ago",
-  },{
-    name: "access-cloud-blockchain",
-    url: "https://access-cloud-blockchain.gist.app",
-    repo: "adityakaaltatva/Access_cloud_df",
-    branch: "master",
-    status: "prod",
-    updated: "3d ago",
-  },
-  // Additional projects...
-];
-
-const DropdownMenu = ({ onClose }) => (
-  <div className="absolute right-0 mt-2 w-48 bg-gray-800 text-gray-300 rounded-lg shadow-lg z-10 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100">
-    <ul>
-      <li
-        className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-        onClick={() => onClose("Add Favorite")}
-      >
-        Add Favorite
-      </li>
-      <li
-        className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-        onClick={() => onClose("View Logs")}
-      >
-        View Logs
-      </li>
-      <li
-        className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-        onClick={() => onClose("Manage Domains")}
-      >
-        Manage Domains
-      </li>
-      <li
-        className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-        onClick={() => onClose("Transfer Project")}
-      >
-        Transfer Project
-      </li>
-      <li
-        className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-        onClick={() => onClose("Settings")}
-      >
-        Settings
-      </li>
-    </ul>
-  </div>
-);
-
-DropdownMenu.propTypes = {
-  onClose: PropTypes.func.isRequired,
+const project = {
+  name: "gist-deployments",
+  url: "https://gist-deployments.gist.app",
+  repo: "adityakaaltatva/GIST-major-IBM",
+  branch: "master",
+  status: "ok",
+  updated: "1minute ago",
 };
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [dropdownIndex, setDropdownIndex] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDropdownAction = (action) => {
     console.log(`Selected: ${action}`);
-    setDropdownIndex(null); // Close dropdown
+    setDropdownOpen(false);
   };
 
   return (
-    <div className="min-h-screen bg-black text-white p-6 flex flex-col">
-      {/* Search Bar */}
-      <div className="sticky top-0 z-20 bg-black p-4 shadow-md transition-all">
-        <div className="flex items-center justify-between">
-          <input
-            type="text"
-            placeholder="Search Repositories and Projects..."
-            className="w-full px-4 py-2 bg-gray-800 text-gray-200 rounded-lg outline-none focus:ring focus:ring-blue-400 transition-all"
-          />
+    <div className="h-screen flex flex-col bg-gray-900 text-gray-100 overflow-hidden">
+      {/* Header */}
+      <header className="py-6 text-center border-b border-gray-700 animate-fade-in">
+        <h1 className="text-4xl font-bold text-gray-100 animate-bounce">
+          GIST Dashboard
+        </h1>
+        <p className="text-gray-400 mt-2">
+          Manage deployments securely and efficiently.
+        </p>
+      </header>
+
+      {/* Main Content */}
+      <div className="flex-grow container mx-auto px-6 py-10 flex flex-col space-y-10">
+        {/* Search and Add New */}
+        <div className="flex justify-between items-center animate-slide-in">
+          <div className="w-full max-w-3xl">
+            <div className="flex items-center bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+              <input
+                type="text"
+                placeholder="Search Repositories and Projects..."
+                className="w-full px-4 py-3 bg-gray-850 text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-600 transition-all"
+              />
+              <button
+                onClick={() => navigate("/deploy")}
+                className="px-6 py-3 bg-gray-700 text-gray-200 hover:bg-gray-600 transition-all hover:animate-pulse"
+              >
+                Add New
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Project Section */}
+        <div className="flex-grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+          {/* Project Card */}
+          <div className="bg-gray-850 rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-xl">
+            <h2 className="text-2xl font-semibold mb-2 text-gray-100">{project.name}</h2>
+            <p className="text-gray-400 mb-4">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline text-gray-300"
+              >
+                {project.url}
+              </a>
+            </p>
+            <p className="text-gray-400">
+              <span className="font-medium">Branch:</span> {project.branch}
+            </p>
+            <p className="text-gray-400">
+              <span className="font-medium">Last Updated:</span>{" "}
+              {project.updated}
+            </p>
+            <p
+              className={`mt-4 inline-block px-3 py-1 text-sm font-medium rounded-full ${
+                project.status === "ok"
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-600"
+              }`}
+            >
+              {project.status}
+            </p>
+          </div>
+        </div>
+
+        {/* Placeholder for More Projects */}
+        <div className="text-center mt-6">
+          <p className="text-gray-500 animate-fade-in">No more projects to display.</p>
           <button
             onClick={() => navigate("/deploy")}
-            className="ml-4 px-6 py-2 bg-blue-500 rounded-lg hover:bg-blue-600 transition duration-300"
+            className="mt-4 px-6 py-3 bg-gray-700 text-gray-200 font-medium rounded-lg hover:bg-gray-600 transition-all hover:animate-pulse"
           >
-            Add New
+            Deploy a New Project
           </button>
         </div>
       </div>
 
-      {/* Projects Grid */}
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="relative bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105"
-          >
-            {/* Card Content */}
-            <div>
-              <h2 className="text-lg font-bold mb-1 text-white">{project.name}</h2>
-              <p className="text-gray-400 mb-2">
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:underline"
-                >
-                  {project.url}
-                </a>
-              </p>
-              <p className="text-gray-400">
-                <i className="fas fa-code-branch"></i> {project.branch}
-              </p>
-              <p className="text-gray-400">
-                <i className="fas fa-clock"></i> {project.updated}
-              </p>
-              <p
-                className={`mt-2 px-2 py-1 rounded-lg inline-block text-sm ${
-                  project.status === "prod" ? "bg-green-500" : "bg-gray-500"
-                }`}
-              >
-                {project.status}
-              </p>
-            </div>
-
-            {/* 3-Dots Menu */}
-            <div className="absolute top-4 right-4">
-              <button
-                onClick={() =>
-                  setDropdownIndex(dropdownIndex === index ? null : index)
-                }
-                className="text-gray-400 hover:text-white"
-              >
-                <i className="fas fa-ellipsis-v"></i>
-              </button>
-              {dropdownIndex === index && (
-                <DropdownMenu onClose={handleDropdownAction} />
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* Footer */}
+      <footer className="py-6 border-t border-gray-700 text-center text-gray-500 animate-fade-in">
+        <p>&copy; {new Date().getFullYear()} GIST Deployments. All rights reserved.</p>
+      </footer>
     </div>
   );
 };

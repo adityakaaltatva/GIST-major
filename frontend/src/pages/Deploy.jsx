@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-import { FaGithub, FaCubes, FaLeaf } from "react-icons/fa";
-import { SiPostgresql, SiRedis, SiMongodb, SiMysql } from "react-icons/si";
+import { FaCubes, FaGithub, FaLeaf } from "react-icons/fa";
+import { SiMongodb, SiMysql, SiPostgresql, SiRedis } from "react-icons/si";
 
 const Deploy = () => {
   const handleRedirect = (path) => {
