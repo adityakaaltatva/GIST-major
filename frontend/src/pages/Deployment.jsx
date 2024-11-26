@@ -1,12 +1,12 @@
 import {
-    CategoryScale,
-    Chart as ChartJS,
-    Legend,
-    LinearScale,
-    LineElement,
-    PointElement,
-    Title,
-    Tooltip,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
 } from "chart.js";
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
@@ -101,30 +101,28 @@ import ArchNavbar from "../Components/NavBar/archNavbar";
   
         <div className="flex-grow p-8">
           <div className="flex space-x-6">
-            {/* Left Section */}
             <div className="w-1/3 bg-gray-800 p-6 rounded-lg shadow-xl transition-transform transform hover:-translate-y-2">
               <h2 className="text-lg font-medium text-gray-200 mb-4">Deployment Details</h2>
               <ul className="space-y-4">
                 <li>
-                  <strong>Deployment:</strong> gist-major-68rk0jqbg.vercel.app
+                  <strong>Deployment:</strong> react-boilerplate68rk0jqbg.gist.app
                 </li>
                 <li>
-                  <strong>Domains:</strong> gist-major.vercel.app
+                  <strong>Domains:</strong> react-boilerplate67.gist.app
                 </li>
                 <li>
                   <strong>Status:</strong>{" "}
                   <span className="text-green-400 font-semibold">Ready</span>
                 </li>
                 <li>
-                  <strong>Created:</strong> 3 minutes ago by adityakaaltatva
+                  <strong>Created:</strong> 1 minutes ago by adityakaaltatva
                 </li>
                 <li>
-                  <strong>Source:</strong> master
+                  <strong>Source:</strong> main
                 </li>
               </ul>
             </div>
   
-            {/* Right Section */}
             <div className="flex-grow bg-gray-800 p-8 ml-6 rounded-lg shadow-xl">
               <h1 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 mb-4">
                 Production Deployment
@@ -142,7 +140,7 @@ import ArchNavbar from "../Components/NavBar/archNavbar";
               ) : (
                 <div>
                   <p className="text-lg">
-                    Your deployment <span className="text-purple-400">gist-major</span> is now live at:
+                    Your deployment <span className="text-purple-400">react-boilerplate</span> is now live at:
                   </p>
                   <a
                     href="https://gist-major.vercel.app"
@@ -150,12 +148,11 @@ import ArchNavbar from "../Components/NavBar/archNavbar";
                     rel="noopener noreferrer"
                     className="text-blue-400 hover:underline mt-4 block"
                   >
-                    gist-major.vercel.app
+                    react-boilerplate67.gist.app
                   </a>
                 </div>
               )}
   
-              {/* Chart */}
               <div className="mt-8">
                 <h2 className="text-lg font-medium mb-4 text-white">Visitor Analytics</h2>
                 <div className="bg-gray-700 p-4 rounded-lg shadow-lg">

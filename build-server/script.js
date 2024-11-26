@@ -2,7 +2,7 @@ const { exec } = require('child_process');
 const path = require('path'); 
 const fs = require('fs');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
-const mime = require('mime-types'); // mime should be imported directly
+const mime = require('mime-types'); 
 
 const s3Client = new S3Client({
     region: 'ap-south-1',
@@ -17,7 +17,7 @@ const PROJECT_ID = process.env.PROJECT_ID;
 async function init() {
     console.log('Executing script.js');
 
-    const outdirpath = path.join(__dirname, 'output'); // Use path module correctly
+    const outdirpath = path.join(__dirname, 'output');
 
     const p = exec(`cd ${outdirpath} && npm install && npm run build`);
 

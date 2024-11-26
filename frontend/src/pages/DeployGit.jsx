@@ -15,12 +15,30 @@ const DeployGit = () => {
   const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [timer, setTimer] = useState(30);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [envFile, setEnvFile] = useState(null);
 
   const isValidGithubUrl = (url) => /github\.com/.test(url);
 
   useEffect(() => {
+    const deploymentSteps = [
+      "Deploying site...",
+      "Attacking index.html...",
+      "Containerizing application...",
+      "Communicating with AWS ECR...",
+      "Running npm Builds in dist folder...",
+      "Your app is being Ready to Use",
+
+      "Finalizing deployment...",
+    ];
+
     if (isDeploying && timer > 0) {
-      const countdown = setTimeout(() => setTimer(timer - 1), 1000);
+      const countdown = setTimeout(() => {
+        setTimer((prev) => prev - 1);
+        setStatusMessage(deploymentSteps[Math.floor((30 - timer) / 6)] || "Deployment almost complete...");
+      }, 1000);
+
       return () => clearTimeout(countdown);
     }
 
@@ -76,6 +94,7 @@ const DeployGit = () => {
     setIsDeploying(true);
     setIsRequestBlocked(true);
     setTimer(30);
+    setStatusMessage("Starting deployment...");
   };
 
   const handleCaptchaVerification = () => {
@@ -84,6 +103,18 @@ const DeployGit = () => {
       setCaptchaVerified(true);
       setIsCaptchaLoading(false);
     }, 2000);
+  };
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  const handleEnvFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setEnvFile(file);
+      alert("Environment file uploaded successfully.");
+      handleCloseModal();
+    }
   };
 
   return (
@@ -135,7 +166,10 @@ const DeployGit = () => {
                     "Deploy Now"
                   )}
                 </button>
-                <button className="flex items-center bg-gray-700 text-white px-6 py-3 rounded-lg hover:scale-105 transition-transform">
+                <button
+                  className="flex items-center bg-gray-700 text-white px-6 py-3 rounded-lg hover:scale-105 transition-transform"
+                  onClick={handleOpenModal}
+                >
                   <FaPlus className="mr-2" />
                   Add Variables
                 </button>
@@ -190,11 +224,12 @@ const DeployGit = () => {
           </>
         ) : (
           <div className="mt-8 flex flex-col items-center space-y-4">
+            <p className="text-lg font-medium text-gray-200">{statusMessage}</p>
             <p className="text-lg font-medium text-gray-200">
               Deploying in <span className="text-purple-400">{timer}</span> seconds...
             </p>
 
-            {/* Skeleton Loader while timer is running */}
+            {/* Progress bar */}
             <div className="w-full max-w-md bg-gray-700 rounded-full h-4 overflow-hidden">
               <div
                 className="bg-purple-600 h-full transition-all"
@@ -204,12 +239,33 @@ const DeployGit = () => {
 
             {/* Skeleton Loader */}
             <div className="mt-4 w-full max-w-md h-10 bg-gray-600 animate-pulse rounded-lg"></div>
-
-            {/* Timer indicator */}
-            <div className="mt-4 w-full max-w-md h-2 bg-gray-600 animate-pulse rounded-lg"></div>
           </div>
         )}
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-gray-800 p-6 rounded-lg w-96">
+            <h2 className="text-lg font-bold text-white mb-4">Add Environment Variables</h2>
+            <label className="text-gray-400 block mb-2">Import from dotenv</label>
+            <input
+              type="file"
+              accept=".env"
+              onChange={handleEnvFileUpload}
+              className="w-full p-2 bg-gray-700 rounded-lg text-white mb-4"
+            />
+            <div className="flex justify-end space-x-4">
+              <button
+                className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:scale-105 transition-transform"
+                onClick={handleCloseModal}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
