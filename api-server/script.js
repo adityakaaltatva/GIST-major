@@ -5,7 +5,6 @@ const { Server } = require('socket.io');
 const Redis = require('ioredis');
 const dotenv = require('dotenv');
 
-// Load environment variables
 dotenv.config();
 
 const app = express();

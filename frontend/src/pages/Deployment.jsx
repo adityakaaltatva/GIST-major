@@ -143,7 +143,7 @@ import ArchNavbar from "../Components/NavBar/archNavbar";
                     Your deployment <span className="text-purple-400">react-boilerplate</span> is now live at:
                   </p>
                   <a
-                    href="https://gist-major.vercel.app"
+                    href="https://react-boilerplate-gist.vercel.app/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-400 hover:underline mt-4 block"

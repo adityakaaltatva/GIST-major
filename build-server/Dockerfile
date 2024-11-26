@@ -1,23 +1,25 @@
 FROM ubuntu:focal
 
-RUN apt-get update
-RUN apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
-RUN apt-get upgrade -y
-RUN apt-get install -y nodejs
-
-RUN apt-get install git -y
+# Update and install required packages
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    nodejs \
+    dos2unix
 
 WORKDIR /home/app
 
+# Copy application files
 COPY main.sh main.sh
 COPY script.js script.js
-COPY package*.json .
+COPY package*.json ./
+
+# Install npm dependencies
 RUN npm install
 
-RUN chmod +x main.sh
-RUN chmo +x script.js
+# Convert line endings and make scripts executable
+RUN dos2unix main.sh && chmod +x main.sh
+RUN chmod +x script.js
 
-
-ENTRYPOINT [ "/home/app/main.sh" ]
-
+# Entry point for the container
+ENTRYPOINT ["/home/app/main.sh"]
